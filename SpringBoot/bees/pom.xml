@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>com.definesys.mpaas</groupId>
 			<artifactId>query</artifactId>
-			<version>0.2.25-SNAPSHOT</version>
+			<version>0.3.7-SNAPSHOT</version>
 		</dependency>
 
 		<!--jwt-->
