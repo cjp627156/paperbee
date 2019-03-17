@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: bees-redis
+spec:
+ type: NodePort
+ ports: 
+  - port: 6379
+    nodePort: 30002
+ selector:
+  app: bees-redis

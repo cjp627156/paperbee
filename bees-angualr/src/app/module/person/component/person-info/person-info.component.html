@@ -1,0 +1,62 @@
+<div class="title">
+  个人信息
+</div>
+<div class="title-divider" >
+</div>
+<div class="info-content">
+  <div class="left-div">
+    <img class="logo-img" src="../../../../../assets/images/user.png">
+  </div>
+  <div class="content-div">
+      <div class="content-item">
+          <div class="item-label">蜂蜜：</div>
+          <div class="item-content">{{integral}} g</div>
+      </div>
+      <div class="content-item">
+        <div class="item-label">昵称：</div>
+        <div class="item-content">{{username}}
+          <!-- <p *ngIf="inputVisible!='Y'">{{username}}</p>
+          <input *ngIf="inputVisible==='Y'" class="normal-input" nz-input placeholder="账号" [(ngModel)]="username"> -->
+        </div>
+      </div>
+      <div class="content-item">
+          <div class="item-label">邮箱：</div>
+          <div class="item-content">{{email}}</div>
+      </div>
+      <div *ngIf="inputVisible==='Y'" class="content-item">
+          <div class="item-label">密码：</div>
+          <div class="item-content">
+            <input  class="normal-input" nz-input placeholder="密码" [(ngModel)]="password">
+          </div>
+        </div>
+    <div class="content-item">
+        <div class="item-label">实名：</div>
+        <div class="item-content">
+            <p *ngIf="inputVisible!='Y'">{{name}}</p>
+            <input *ngIf="inputVisible==='Y'" class="normal-input" nz-input placeholder="真实姓名" [(ngModel)]="name">
+        </div>
+    </div>
+    <div class="content-item">
+      <div class="item-label">手机：</div>
+      <div class="item-content">
+          <p *ngIf="inputVisible!='Y'">{{phone}}</p>
+          <input *ngIf="inputVisible==='Y'" class="normal-input" nz-input placeholder="手机号" [(ngModel)]="phone">
+        </div>
+  </div>
+    <div class="content-item">
+        <div class="item-label">简介：</div>
+        <div *ngIf="(signature===null||signature===''||signature===undefined)&&inputVisible!='Y'" class="item-content">暂时没有个人简介，<a (click)="onEdit()"> 立即添加</a></div>
+        <div *ngIf="!(signature===null||signature===''||signature===undefined)&&inputVisible!='Y'" class="item-content">{{signature}}</div>
+        <div *ngIf="inputVisible==='Y'" style="width: 60%;float: left;"><textarea class="textarea" rows="5" placeholder="我是一名程序员..." nz-input [(ngModel)]="signature"></textarea></div>
+        <!-- <div style="width: 20%;float: right;" >
+          <div class="signature-button" (click)="onSubmitSignature()"><i *ngIf="inputVisible==='Y'" nz-icon type="check-circle" theme="twotone" [twoToneColor]="'#52c41a'"></i></div>
+        </div>  -->
+    </div>  
+  </div>
+  <div *ngIf="inputVisible!='Y'" (click)="onEdit()" class="edit-div">
+    修改资料
+  </div>
+  <div *ngIf="inputVisible==='Y'" (click)="onSave()" class="save-div">
+      保存
+    </div>
+</div>

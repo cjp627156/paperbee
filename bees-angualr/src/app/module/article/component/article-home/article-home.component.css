@@ -1,0 +1,329 @@
+.left{
+    width: 17%;
+    height: 88%;
+    /* border-right: 0.1px solid #dddddd; */
+    position: absolute;
+    top: 66px;
+    
+}
+.middle{
+    /* height:88%; */
+    /* border-right: 1px solid #dddddd; */
+    height: auto;
+    width: 75%;
+    margin-left: 17%;
+    position: absolute;
+    top: 66px;
+}
+
+.select{
+    height: 100px;
+    border-bottom: 0.5px solid #dddddd;
+    /* border-left: 1px solid #dddddd; */
+}
+
+.title{
+    padding-top: 20px;
+    height: 20px;
+    opacity: 0.85;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    color: #000000;
+}
+
+.title-span{
+    margin-left: 3.5%;
+    width: 73px;
+    white-space: nowrap;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+
+.type{
+    width: 360px;
+    height: 35px;
+    float: right;
+    margin-top: 42px;
+    opacity: 0.85;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    font-style: normal;
+    color: #000;
+}
+
+.type-div{
+    padding: 1.8% 4%;
+    border-right: 0.5px solid #dddddd;
+    line-height: 32px;
+    cursor:pointer;
+}
+
+.type-div1{
+    padding: 1.8% 6%;
+    border-right: 0.5px solid #dddddd;
+    line-height: 32px;
+    cursor:pointer;
+}
+
+.type-div2{
+    padding: 1.8% 8%;
+    border-right: 0.5px solid #dddddd;
+    line-height: 32px;
+    cursor:pointer;
+}
+
+.comp{
+    cursor:pointer;
+    margin-top: 15%;
+    margin-left: 29%;
+    margin-right: 7%;
+    padding: 5px 0;
+    border-radius: 3px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.tech{
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #000;
+    margin-left: 32%;
+    margin-top: 7%;
+}
+
+.hr{
+    background-color: #ebebeb;
+    height: 1px;
+    width: 57%;
+    margin-top: -11px;
+    margin-left: 62px;
+}
+
+.menu_list{
+    /* height: 266px; */
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.647058823529412);
+    padding: 0 0 6px 0;
+    /* overflow: auto; */
+    margin-left: -8px;
+    margin-right: 13px;
+}
+
+.content{
+    cursor: pointer;
+    height: 110px;
+    border-bottom: 0.5px solid #ebebeb;
+    /* border-left: 1px solid #ebebeb; */
+}
+
+.content:hover{
+    cursor: pointer;
+    /* height: 110px;
+    border-bottom: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    background-color: #e6f7ff; */
+}
+
+.content-tip{
+    background-color: rgba(230, 247, 255, 1);
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    color: #076DD9;
+    padding: 3px 14px;
+    margin-right: 8px;
+}
+
+.content-title{
+    opacity: 0.85;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 15px;
+    color: #151414;
+    margin-left: -5%;
+}
+
+.content-number{
+    opacity: 0.65;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #000000;
+    padding-right: 12%;
+    float: left;
+    width: 19%;
+}
+
+.content-read{
+    opacity: 0.65;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    color: #000000;
+    padding-left: 5.5%;
+    float: left;
+}
+
+.content-tip-div{
+    float: left;
+    margin-left: 9.5%;
+    width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.menuList{
+    cursor: pointer;
+    margin-top: 4%;
+    margin-right: 7%;
+    padding: 5px 0px;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.647058823529412);
+    border-radius: 3px;
+}
+
+.content-div{
+    padding: 10px 0 0 5.5%;
+    width: 97%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 35px;
+}
+/* 
+.right{
+    position: absolute;
+    right: 0;
+    width: 18%;
+    height: 88%;
+    top: 8.7%;
+}
+
+.right-pics{
+    width: 80%;
+   
+    margin-left: 11%;
+    margin-top: 23%;
+} */
+
+::ng-deep .ant-carousel .slick-dots {
+    bottom: -13px;
+}
+
+::ng-deep .ant-carousel .slick-dots li.slick-active button {
+    background-color: #1890ff;
+}
+
+::ng-deep .ant-carousel .slick-dots li button {
+    background-color: #1890ff;
+}
+
+.content-div1{
+    width: 100%;
+    height: 83%;
+    min-height: 500px;
+}
+
+.more{
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    color: #298dea;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+
+/* .more:hover{
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    color: #40a9ff;
+} */
+
+body{
+    overflow: auto;
+}
+
+.more-div{
+    text-align: center;
+    margin-top: -2%;
+    margin-bottom: 1%;
+}
+
+.author{
+    padding-right: 8%;
+    float: right;
+    font-size: 12px;
+    padding-top: 5px;
+    font-weight: 200;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+
+.like{
+    margin-left: 5.5%;
+    float: left;
+    border-color: white;
+    background-color: #e4f0f7cc;
+}
+
+.like:hover{
+    margin-left: 5.5%;
+    float: left;
+    border-color: white;
+    background-color: #92d4f7;
+}
+
+.like-number{
+    float: left;
+    padding-left: 6px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #0770e2;
+    padding-top: 2px;
+}
+.like-font{
+    float: left;
+    padding-left: 6px;
+    padding-top: 5px;
+    font-size: 12px;
+    font-weight: 300;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+.footer{
+    border-top: 1px solid #ebebeb;
+    width: 130%;
+    margin: 30px 0 30px -21%;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    color: rgba(39, 38, 38, 0.6);
+}
+
+.footer-font{
+    padding-bottom: 10px;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}

@@ -1,0 +1,22 @@
+<div class="title">
+  我的文章
+</div>
+<div class="title-divider" >
+</div>
+<div class="content-div">
+<nz-table #basicTable [nzData]="dataSet" [nzTotal]="total"
+[(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" [nzFrontPagination]="false" 
+(nzPageIndexChange)="initQuery()" >
+  <tbody>
+    <tr *ngFor="let data of basicTable.data;"   >
+      <td>
+        <div style="float:left;">
+           <a class="article-title" (click)="openArticle(data)">{{data.title}}</a>
+        </div>
+        <a (click)="onDelete(data.rowId)" class="delete-div">删除</a>
+        <a (click)="edit(data)" class="delete-div" style="color: #54575a">编辑</a>
+      </td> 
+    </tr>
+  </tbody>
+</nz-table>
+</div>

@@ -1,0 +1,77 @@
+<div class="left">
+    <div class="comp"><span style="padding-left: 32px;">公司公告</span></div>
+    <div class="comp" style="margin-top: 0;background-color: rgba(14, 142, 233, 1);color: #fff;"><span style="padding-left: 32px;">热点文章</span></div>
+    <!-- <div class="comp" style="margin-top: 0;"><span style="padding-left: 32px;">接口文档</span></div> -->
+    <div class="tech">
+        <span>技术社区</span>
+        <div class="hr"></div> 
+        <div class="menuList" *ngFor="let item of menuList;let i = index" (click)="initPageIndex();getLabelArticle(item.labelName)"
+            [ngStyle]="{'background-color':label == item.labelName ? 'rgba(14, 142, 233, 1)' : '','color': label == item.labelName ? '#fff' : '','margin-top': i ==  0 ? '9%' : ''}">
+            <span style="padding-left: 30px;">{{item.labelName}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="middle">
+    <div class="select">
+        <div class="title"><span class="title-span">热点文章</span></div>
+        <div class="type">
+            <span class="type-div" (click)="initPageIndex();changeSort('view')" [ngStyle]="{'background-color':viewBoolean ? 'rgba(14, 142, 233, 1)' : '','color': viewBoolean ? '#fff' : ''}">浏览量</span>
+            <span class="type-div1" (click)="initPageIndex();changeSort('like')" [ngStyle]="{'background-color':likeBoolean ? 'rgba(14, 142, 233, 1)' : '','color': likeBoolean ? '#fff' : ''}">优秀</span>
+            <span class="type-div1" (click)="initPageIndex();changeSort('time')" [ngStyle]="{'background-color':timeBoolean ? 'rgba(14, 142, 233, 1)' : '','color': timeBoolean ? '#fff' : ''}">时间</span>
+            <span class="type-div2">周</span>
+            <span class="type-div2" style="border: none">月</span>
+        </div>
+    </div>
+    <div class="content-div1">
+        <div class="content" *ngFor="let data of articles; let  i = index;" [ngStyle]="{'margin-bottom' : i + 1  == articles.length ? '3%' : ''}">
+            <div class="content-div" (click)="detail(data)">
+                <span class="content-number">{{data.articleViews}}</span>
+                <span class="content-title">{{data.title}}</span>
+            </div>
+            <div style="padding-top: 12px;height: 25px;" (click)="detail(data)">
+                <span class="content-read">阅读</span>
+                <div class="content-tip-div">
+                    <span class="content-tip" *ngFor="let item of data.labelList">{{item.labelName}}</span>
+                </div>
+                <!-- <div>
+                    <span>{{data.author}} {{data.creationDate}}</span>
+                </div> -->
+            </div>
+            <div style="padding-top:18px;height: 45px;">
+                <button class="like" nz-button nzType="default" nzSize="small" nzShape="circle" (click)="like(data)">
+                    <i nz-icon type="like" theme="twotone" [twoToneColor]="'#0a7af3'"></i>
+                </button>
+                <div class="like-number">x {{data.articleLikes}} </div>
+                <div *ngIf="data.liked=='unlike'" class="like-font">· 赞</div>
+                <div *ngIf="data.liked=='liked'" class="like-font">· 已赞</div>
+                <div class="author">
+                    <span>{{data.author}} · 发布于 {{data.creationDate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="more-div">
+            <button nz-button class="more" (click)="getMore()" *ngIf="!isMore && isMore1">点击载入更多</button>
+            <button nz-button nzLoading class="more" *ngIf="isMore && isMore1">加载中</button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-font">
+            Copyright © 三菱项目bees研发成员 /
+            <a style="margin-left:5px;font-family: cursive;color: rgba(39, 38, 38, 0.6);" href="http://www.miibeian.gov.cn/">
+                皖ICP备19001492号-1
+            </a>
+            / 意见邮箱 kerry.wu@definesys.com
+        </div>
+    </div>
+</div>
+
+<!-- <div class="right">
+    <div class="right-pics">
+        <nz-carousel nzAutoPlay>
+            <div nz-carousel-content *ngFor="let index of array">
+                <img style="width:270px;;height:220px;" src={{index}}>
+            </div>
+        </nz-carousel>
+    </div>
+</div> -->

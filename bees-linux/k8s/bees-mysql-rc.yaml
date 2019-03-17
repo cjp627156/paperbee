@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: bees-mysql
+spec:
+ replicas: 1
+ selector:
+  app: bees-mysql
+ template:
+  metadata:
+   labels:
+    app: bees-mysql
+  spec:
+   containers:
+   - name: bees-mysql
+     image: registry.cn-hangzhou.aliyuncs.com/kerry2019/bees-mysql:v1.0
+     ports:
+     - containerPort: 3306
+     env:
+     - name: MYSQL_ROOT_PASSWORD
+       value: beesmysqlpassword
+     volumeMounts:
+     - name: mysql-data-persistent-storage
+       mountPath: /var/lib/mysql
+   volumes:
+   - name: mysql-data-persistent-storage
+     nfs:
+      path: /home/nfs/bees/mysql/data
+      server: 47.96.238.21
