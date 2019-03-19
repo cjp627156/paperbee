@@ -10,8 +10,11 @@ import com.definesys.mpaas.common.exception.MpaasRuntimeException;
 import com.definesys.mpaas.common.http.Response;
 import com.definesys.mpaas.query.MpaasQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.jws.soap.SOAPBinding;
 
 import static com.definesys.bees.util.JwtUtil.createToken;
 import static com.definesys.mpaas.query.session.MpaasSession.getCurrentUser;
@@ -22,24 +25,17 @@ import java.util.Map;
 /**
  * @Copyright: Shanghai Mitsubishi Elevator Company.All rights reserved.
  * @Description:
- * @author: yongjie.lin
+ * @author: kerry.wu
  * @since: 2018/12/31 23:04
- * @history: 1. 2018/12/31 created by yongjie.lin
+ * @history: 1. 2018/12/31 created by kerry.wu
  */
 
 @RestController
 @RequestMapping("/bees/user")
 public class UserController {
-    private final static int ARTICLE_WEIGHT=5;
-    private final static int LIKE_WEIGHT=1;
 
     @Autowired
-    UserDao userDao;
-    @Autowired
-    ArticleLikeDao articleLikeDao;
-    @Autowired
-    ArticleDao articleDao;
-
+    private UserDao userDao;
     /**
      * 登陆
      *
@@ -72,12 +68,21 @@ public class UserController {
         return Response.ok().set("token", token);
     }
 
+    /**
+     * 获取自己的个人信息
+     * @return
+     */
     @RequestMapping(path="/getSelfInfo",method = RequestMethod.GET)
     public Response getSelfInfo(){
         User user=userDao.getUserInfo(getCurrentUser());
         return Response.ok().data(user);
     }
 
+    /**
+     * 更新用户信息
+     * @param request
+     * @return
+     */
     @RequestMapping(path = "/updateSelfInfo",method = RequestMethod.POST)
     public Response updateSelfInfo(@RequestBody Map<String,Object>request){
         String rowId=(String)request.get("rowId");
@@ -90,13 +95,6 @@ public class UserController {
         User user=new User(username,password,name,phone,email,signature);
         userDao.updateUserInfo(rowId,user);
         return Response.ok();
-    }
-
-    private void updateIntegralByUser(String user){
-        int articleCount=articleDao.getArticleAmountByUser(user);
-        int likeCount=articleLikeDao.getLikeAmountByUser(user);
-        int integral=ARTICLE_WEIGHT*articleCount+LIKE_WEIGHT*likeCount;
-        userDao.updateIntegral(user,integral);
     }
 
 

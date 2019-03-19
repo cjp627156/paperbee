@@ -44,11 +44,11 @@ public class ArticleDao {
         PageQueryResult<ArticleQueryV> result = null;
         if (orderBy != null && orderBy.trim().length() > 0) {
             result = sw.buildQuery()
-                    .sql("select *,if(LOCATE(like_users,'," + user + ",')>0,'liked','unlike')as liked from article_query_v where search_content like '%" + searchContent + "%' and labels like '%" + label + "%'  ORDER BY " + orderBy)
+                    .sql("select *,if(LOCATE('," + user + ",',like_users)>0,'liked','unlike')as liked from article_query_v where search_content like '%" + searchContent + "%' and labels like '%" + label + "%'  ORDER BY " + orderBy)
                     .doPageQuery(page, pageSize, ArticleQueryV.class);
         } else {
             result = sw.buildQuery()
-                    .sql("select *,if(LOCATE(like_users,'," + user + ",')>0,'liked','unlike')as liked from article_query_v where search_content like '%" + searchContent + "%' and labels like '%" + label + "%'  order by article_likes desc,article_views desc")
+                    .sql("select *,if(LOCATE('," + user + ",',like_users)>0,'liked','unlike')as liked from article_query_v where search_content like '%" + searchContent + "%' and labels like '%" + label + "%'  order by article_likes desc,article_views desc")
                     .doPageQuery(page, pageSize, ArticleQueryV.class);
         }
         for (ArticleQueryV article : result.getResult()) {
@@ -79,7 +79,7 @@ public class ArticleDao {
 
     public PageQueryResult getArticleByCreator(String creator, Integer page, Integer pageSize) {
         PageQueryResult<ArticleQueryV> result = sw.buildQuery()
-                .sql("select * from article_query_v where created_by='" + creator + "'")
+                .sql("select * from article_query_v where created_by='" + creator + "' order by creation_date desc")
                 .doPageQuery(page, pageSize, ArticleQueryV.class);
         return result;
     }

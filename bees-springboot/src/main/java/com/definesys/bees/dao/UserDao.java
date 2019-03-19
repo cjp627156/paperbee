@@ -87,8 +87,8 @@ public class UserDao {
                 .get("NAME");
     }
 
-//    public List<User> getAllUser(){
-//      return   sw.buildQuery()
-//                .doQuery(User.class);
-//    }
+    public List<User> getAllUser(){
+      return   sw.buildQuery()
+                .doQuery(User.class);
+    }
 }

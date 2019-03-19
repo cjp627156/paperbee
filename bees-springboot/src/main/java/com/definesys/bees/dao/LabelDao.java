@@ -55,6 +55,7 @@ public class LabelDao {
     public List<Label> getAllLabels() {
         return sw.buildQuery()
                 .select("id,label_name")
+                .orderBy("label_name","asc")
                 .doQuery(Label.class);
     }
 
