@@ -1,0 +1,57 @@
+<div class="logo-div">
+  <img routerLink='/home/article' class="logo-img" src="../../../../../assets/images/logo.png" />
+</div>
+<div style="width: 90%;margin-left: 5%;">
+
+<div style="width: 90%;margin-left: 5%;">
+  <!-- static markdown -->
+    <div class="title">
+      {{data.title}}
+    </div>
+  <div style="font-size:12px;padding-bottom: 50px;">
+    <div *ngIf="data.columnName!=null" style="float:left">专栏 · {{data.columnName}}</div>
+    <div style="float:right;">{{data.author}}, 发布于{{data.creationDate}}</div>
+  </div>
+  <!-- loaded from remote url -->
+  <!-- <div markdown [src]="article.fileUrl"></div> -->
+  <div markdown [data]="article.content"></div>
+</div>
+<div class="comment-take">
+  评论区
+</div>
+<div class="comment-list" *ngFor="let comment of commentList;">
+  <div class="comment-title">
+    {{comment.createdBy}} · {{comment.creationDate}}
+  </div>
+  <div class="comment-content">
+    <pre style="background-color:#fafafa;max-height:210px;white-space:pre-wrap; word-wrap:break-word;font-size:12px;">
+      {{comment.content}}
+  </pre>
+  </div>
+</div>
+<div class="comment-div">
+  <textarea class="comment-text" rows="4" nz-input [(ngModel)]="commentValue"></textarea>
+  <div style="margin-left:10%;width:90%;">
+    <button class="comment-button" nz-button nzType="primary" (click)="onComment()">发布评论</button>
+  </div>
+</div>
+
+<div class="share">
+  <div style="float:left;margin-right: 10px;font-weight: 500;font-size: 16px;">分享：</div>
+  <div (click)="onShare('qzone')" class="share-item">
+    <img src="../../../../../assets/images/share-qqkj.png" width="28">
+  </div>
+  <div (click)="onShare('qq')" class="share-item">
+    <img src="../../../../../assets/images/share-qq.png" width="24">
+  </div>
+  <div (click)="onShare('sina')" class="share-item">
+    <img src="../../../../../assets/images/share-xlwb.png" width="24">
+  </div>
+  <!-- <div (click)="onShare('wechat')" class="share-item">
+    <img src="../../../../../assets/images/share-wx.png" width="24">
+  </div> -->
+</div>
+
+<nz-modal [(nzVisible)]="shareVisible" nzTitle="分享内容描述" (nzOnCancel)="shareCancel()" (nzOnOk)="shareOK()">
+  <textarea rows="4" nz-input [(ngModel)]="shareDesc" placeholder="七岁那年我抓住了一只蝉，就以为抓住了夏天..."></textarea>
+</nz-modal>

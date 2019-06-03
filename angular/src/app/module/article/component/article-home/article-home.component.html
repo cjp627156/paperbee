@@ -1,0 +1,72 @@
+<ngx-loading-bar></ngx-loading-bar>
+<nz-back-top [nzTemplate]="tpl"  >
+    <ng-template #tpl>
+      <div class="ant-back-top-inner">Up</div>
+    </ng-template>
+  </nz-back-top>
+  
+<div class="left">
+    <div class="comp"><span class="rank" routerLink='/home/chart'>蜂王榜</span></div>
+    <div class="comp"><span style="padding-left: 24%;color: #2895ef;font-weight: 600;">文章库</span></div>
+    <div class="tech">
+        <nz-divider style="width:20px;" nzText="技术社区"></nz-divider>
+        <div class="menuList" *ngFor="let item of menuList;let i = index" (click)="initPageIndex();getLabelArticle(item.labelName)"
+            [ngStyle]="{'background-color':label == item.labelName ? 'rgba(14, 142, 233, 1)' : '','color': label == item.labelName ? '#fff' : '','margin-top': i ==  0 ? '9%' : ''}">
+            <span class="menu-font">{{item.labelName}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="middle">
+    <div class="select">
+        <div class="title"><span class="title-span">文章库</span></div>
+        <div class="type">
+            <span class="type-div" (click)="initPageIndex();changeSort('view')" [ngStyle]="{'background-color':viewBoolean ? 'rgba(14, 142, 233, 1)' : '','color': viewBoolean ? '#fff' : ''}">浏览量</span>
+            <span class="type-div1" (click)="initPageIndex();changeSort('like')" [ngStyle]="{'background-color':likeBoolean ? 'rgba(14, 142, 233, 1)' : '','color': likeBoolean ? '#fff' : ''}">优秀</span>
+            <span class="type-div1" (click)="initPageIndex();changeSort('time')" [ngStyle]="{'background-color':timeBoolean ? 'rgba(14, 142, 233, 1)' : '','color': timeBoolean ? '#fff' : ''}">时间</span>
+            <span class="type-div2">周</span>
+            <span class="type-div2" style="border: none">月</span>
+        </div>
+    </div>
+    <div class="content-div1">
+        <div class="content" *ngFor="let data of articles; let  i = index;" [ngStyle]="{'margin-bottom' : i + 1  == articles.length ? '3%' : ''}">
+            <div class="content-div" (click)="detail(data)">
+                <span class="content-number">{{data.articleViews}}</span>
+                <span class="content-title">{{data.title}}</span>
+            </div>
+            <div style="padding-top: 4px;height: 25px;" (click)="detail(data)">
+                <span class="content-read">阅读</span>
+                <div class="content-tip-div">
+                    <span class="content-tip" *ngFor="let item of data.labelList;let i = index">
+                      <span *ngIf="i!=0"> / {{item.labelName}}</span>
+                      <span *ngIf="i==0">{{item.labelName}}</span>
+                    </span>
+                </div>
+            </div>
+            <div style="padding-top:7px;height: 45px;">
+                <button class="like" nz-button nzType="default"  nzSize="small" nzShape="circle" (click)="like(data)">
+                    <i *ngIf="data.liked=='unlike'" nz-icon type="like" theme="twotone" [twoToneColor]="'#bfbfbf'"></i>
+                    <i *ngIf="data.liked!='unlike'" nz-icon type="like" theme="twotone" [twoToneColor]="'#0a7af3'"></i>
+                </button>
+                <div class="like-number">x {{data.articleLikes}} </div>
+                <div *ngIf="data.columnName!=null" class="column">专栏 · 《{{data.columnName}}》</div>
+                <div class="author">
+                    <span>{{data.author}} · 发布于 {{data.creationDate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="more-div">
+            <button nz-button class="more" (click)="getMore()" *ngIf="!isMore && isMore1">点击载入更多</button>
+            <button nz-button nzLoading class="more" *ngIf="isMore && isMore1">加载中</button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-font">
+            Copyright © 得帆三菱项目研发组 /
+            <a style="margin-left:5px;font-family: cursive;color: rgba(39, 38, 38, 0.6);" href="http://www.miibeian.gov.cn/">
+                皖ICP备19001492号-1
+            </a>
+            / 意见邮箱 kerry.wu@definesys.com
+        </div>
+    </div>
+</div>

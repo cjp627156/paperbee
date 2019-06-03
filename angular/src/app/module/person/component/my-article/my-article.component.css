@@ -1,0 +1,62 @@
+.title{
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    line-height: 60px;
+    vertical-align: middle;
+    padding-left: 5%;
+}
+
+.title-divider{
+    height: 1px;
+    background-color: #7d7c7c2e;
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 10px;
+}
+
+.content-div{
+    width: 94%;
+    margin-left: 3%;
+}
+
+.delete-div{
+    float: right;
+    width: 30px;
+    margin-right: 10px;
+    font-size: 10px;
+    text-align: center; 
+    color: #f5222d;
+}
+
+.delete-div:active{
+    border-bottom-width: thin;
+    border-bottom-style: double;
+}
+
+::ng-deep .ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td{
+    background: white;
+}
+
+.article-title{
+    color: #3e3c3cf0;
+    font-size: 13px;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+
+.columnSelect{
+    margin-left: 43%;
+    width: 260px;
+}
+
+.article-column{
+    font-size: 9px;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    margin-left:55%;
+}
+
+.article-creationdate{
+    font-size: 9px;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    float:left;
+}

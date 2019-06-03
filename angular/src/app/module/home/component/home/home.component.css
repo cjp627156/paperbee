@@ -1,0 +1,140 @@
+.top{
+    position: relative;
+    height: 56px;
+    background-color: white;
+    -moz-box-shadow: 0px 1px 1px rgba(201, 201, 201, 0.349019607843137);
+    -webkit-box-shadow: 0px 1px 1px rgba(201, 201, 201, 0.349019607843137);
+    box-shadow: 0px 0.5px 0.5px 0px #e8e8e8;
+}
+
+.logo-div{
+    border-width: 0px;
+    position: absolute;
+    left: 4%;
+    top: 5px;
+    width: 178px;
+}
+
+.logo-img{
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 110px;
+    outline: none;
+}
+
+.logo-img:hover{
+    cursor: pointer;
+}
+
+
+
+.top-input{
+    position: absolute;
+    left: 41%;
+    top: 18%;
+    width: 20%;
+    height: 33px;
+    font-size: 13px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 18px;
+    padding-left: 2%;
+    border: none;
+    background-color: #bfbfbf1a;
+    outline: none;
+}
+
+
+
+
+
+input::-webkit-input-placeholder {
+    opacity: 0.43;
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: #000000;
+}
+
+.user-image-w{
+    border-width: 0px;
+    position: absolute;
+    right: 9%;
+    top: 6%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+
+
+.create{
+    position: absolute;
+    cursor: pointer;
+    right: 15%;
+    top: 25%;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.55);
+    height: 30px;
+    line-height: 30px;
+    /* border-radius: 4px; */
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+}
+
+.create:active{
+    color: #0E8EE9;
+}
+
+.login{
+    position: absolute;
+    right: 12%;
+    top: 20%;
+}
+
+.create-todo{
+    cursor: pointer;
+    line-height: 27px;
+    height: 27px;
+    margin-top: -11%;
+    padding-left: 14%;
+}
+
+.create-todo:hover{
+    cursor: pointer;
+    line-height: 27px;
+    height: 27px;
+    margin-top: -11%;
+    padding-left: 14%;
+    background-color: #ebebeb;
+}
+
+.create-draft{
+    line-height: 27px;
+    height: 27px;
+    padding-left: 14%;
+}
+
+.create-draft:hover{
+    cursor: pointer;
+    line-height: 27px;
+    height: 27px;
+    padding-left: 14%;
+    background-color: #ebebeb;
+} 
+
+.div-back:hover{
+    cursor: pointer;
+    background-color: #ebebeb;
+}
+
+::ng-deep .ant-popover-title {
+    color: unset;
+    font-weight: unset;
+    padding: 5px 0px 0px;
+    min-width: 126px;
+}
+
+::ng-deep .ant-popover-inner-content {
+    padding: 7px 0px;
+}
+
