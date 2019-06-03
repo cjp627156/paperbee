@@ -1,0 +1,29 @@
+<div class="title">
+  我的文章
+  <nz-select class="columnSelect" [(ngModel)]="selectedColumn" (ngModelChange)="initQuery()" nzAllowClear
+    nzPlaceHolder="选择专栏">
+    <nz-option *ngFor="let column of columnList" [nzValue]="column" [nzLabel]="column.columnName"></nz-option>
+  </nz-select>
+</div> 
+<div class="title-divider">
+</div>
+<div class="content-div">
+  <nz-table #basicTable [nzData]="dataSet" [nzTotal]="total" [nzNoResult]="'赶快写文章吧!'" [(nzPageIndex)]="pageIndex"
+    [(nzPageSize)]="pageSize" [nzFrontPagination]="false" (nzPageIndexChange)="initQuery()">
+    <tbody>
+      <tr *ngFor="let data of basicTable.data;">
+        <td>
+          <div style="float:left;margin: -10px 0 -10px 0;width:70%;">
+            <a class="article-title" (click)="openArticle(data)">{{data.title}}</a>
+            <div style="margin:7px 0 2px 0;">
+              <div class="article-creationdate">{{data.creationDate}}</div>
+              <div *ngIf="data.columnName!=null" class="article-column">《{{data.columnName}}》</div>
+            </div>
+          </div>
+          <a (click)="onDelete(data.rowId)" class="delete-div">删除</a>
+          <a (click)="edit(data)" class="delete-div" style="color: #3e3c3cf0;">编辑</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

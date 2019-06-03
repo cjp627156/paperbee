@@ -1,0 +1,61 @@
+<div class="body">
+  <div class="top">
+    <img routerLink='/home/article' style="width: 110px;margin-left: 1%;outline: none;" src="../../../../../assets/images/logo.png" />
+    <span style="font-size: 18px;color: #666c;margin-left: 2%;">写文章</span>
+    <button nz-button nzType="primary" class="create-button" (click)="onPublic()">发布文章</button>
+  </div>
+  <div class="title">
+  
+    <input nz-input [(ngModel)]="title" placeholder="标题：那是我夕阳下的奔跑" id="title">
+  </div>
+    <nz-select class="column" nzSize="large" [(ngModel)]="selectedColumn" nzAllowClear
+      nzPlaceHolder="选择专栏（选填）">
+      <nz-option *ngFor="let column of columnList" [nzValue]="column" [nzLabel]="column.columnName"></nz-option>
+    </nz-select>
+    <div class="tag">
+      <div placeholder="标签，如：php（一篇文章最多能添加四个标签）" id="inp-tag" nz-popover nzTrigger="click" [nzContent]="createTemplate1"
+        nzPlacement="bottomLeft">
+        <nz-tag *ngFor="let tag of selectedTags" [nzColor]="'blue'" nzMode="closeable"
+          (nzOnClose)="handleChange1(false, tag)">
+          {{ tag }}
+        </nz-tag>
+      </div>
+    </div>
+  <div style="height: 65%">
+    <div class="edit-div"><i nz-icon type="picture" theme="outline" class="upload" (click)="showUpload()"></i></div>
+    <textarea class="variable-textarea" [(ngModel)]="markdown" (click)="getCaretPosWithEvent($event)"></textarea>
+    <markdown class="variable-binding" [data]="markdown"></markdown>
+  </div>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+  (nzOnCancel)="destroyTplModal()" id="upload"></nz-modal>
+
+<ng-template #createTemplate1>
+  <nz-tag *ngFor="let label of labels;let i=index;" [nzColor]="colors[i%10]"
+    (nzCheckedChange)="handleChange1($event, label.labelName)" nzMode="checkable"
+    [nzChecked]="selectedTags.indexOf(tag) > -1">{{label.labelName}}</nz-tag>
+</ng-template>
+
+<ng-template #modalTitle>
+  插入图片
+</ng-template>
+
+<ng-template #modalContent id="image">
+  <span>图片体积不得大于 4 MB </span>
+  <nz-upload nzType="drag" [nzMultiple]="true" [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzLimit]="2">
+    <p class="ant-upload-drag-icon">
+      <i nz-icon type="inbox"></i>
+    </p>
+    <p class="ant-upload-text">单击或拖动文件到该区域上传</p>
+  </nz-upload>
+  <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleUpload()"
+    [disabled]="fileList.length == 0" style="margin-top: 16px">
+    {{ uploading ? 'Uploading' : 'Start Upload' }}
+  </button>
+</ng-template>
+
+<ng-template #modalFooter>
+  <button nz-button nzType="default" (click)="destroyTplModal()" style="margin-right: 2%;"><i nz-icon
+      type="close-circle" theme="outline"></i>关闭</button>
+</ng-template>
