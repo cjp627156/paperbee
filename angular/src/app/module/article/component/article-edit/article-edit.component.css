@@ -52,7 +52,7 @@
 }
 
 .tag{
-    height: 6%;
+    height: 6.5%;
     margin-top: 1%;
     padding: 0 1%;
     width: 75%;
@@ -112,39 +112,6 @@
   background-color: white;
 }
 
-::ng-deep pre{
-    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
-    font-size: 0.8em;
-    font-weight: 500;
-    background-color: #f2f2f2;
-    color: #001529;
-    background-size: 30px,30px;
-    padding: 1em 1em 1em 1em;
-}
-
-::ng-deep h2{
-    margin-top: 0;
-    color: rgba(0,0,0,.85);
-    font-weight: 500;
-    font-size: 1.75em;
-    line-height: 1.5em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
-} 
-
-::ng-deep h1{
-    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
-}
-
-::ng-deep body{
-    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
-    color: #1b1919;
-}
-
-::ng-deep img{
-    max-width: 100%;
-}
 
 .edit-div{
     background-color: #fff;
@@ -154,6 +121,8 @@
     border-right: 1px solid #CCC;
     border-top: 1px solid #CCC;
     height: 33px;
+    display: flex;
+    align-items: center;
 }
 
 textarea:focus {
@@ -172,13 +141,11 @@ textarea:focus {
 
 .upload{
     font-size: 21px;
-    margin-top: 0.42%;
     margin-left: 1%;
 }
 
 .upload:hover{
     font-size: 21px;
-    margin-top: 0.42%;
     margin-left: 1%;
     color: #1890ff;
     cursor:pointer;
@@ -209,4 +176,44 @@ textarea:focus {
     font-size: 15px;
     line-height: 38px;
     margin-left: 12px;
+}
+
+
+markdown ::ng-deep blockquote{
+    padding: 0 1em;
+    color: rgba(0,0,0,0.535);
+    border-left: 0.25em solid rgba(0,0,0,0.11);
+}
+
+markdown ::ng-deep table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+markdown ::ng-deep table td{
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+
+markdown ::ng-deep table th{
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+
+markdown ::ng-deep ul {
+    list-style-type: inherit;
+    padding-left: 40px !important;
+}
+
+markdown ::ng-deep li {
+    list-style-type: inherit;
+}
+
+markdown ::ng-deep ol ul {
+    list-style-type: circle;
+} 
+
+::ng-deep img{
+    max-width: 100%;
 }

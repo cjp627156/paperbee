@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NzIconService } from 'ng-zorro-antd';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Bees';
+  constructor(iconService : NzIconService){
+    //iconService.addIcon({name : "heading1",theme: 'outline',icon: './assets/images/heading1.svg'});
+  }
 }

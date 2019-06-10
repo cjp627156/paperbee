@@ -23,8 +23,28 @@
     </div>
   </div>
   <div style="height: 65%">
-    <div class="edit-div"><i nz-icon type="picture" theme="outline" class="upload" (click)="showUpload()"></i></div>
-    <textarea class="variable-textarea" [(ngModel)]="content" (click)="getCaretPosWithEvent($event)"></textarea>
+    <div class="edit-div">
+      <i title="Heading 1"  class="svg-icon svg-heading1"  (click)="addTemplate('# ')"></i>
+      <i title="Heading 2"  class="svg-icon svg-heading2"  (click)="addTemplate('## ')"></i>
+      <i title="Heading 3"  class="svg-icon svg-heading3"  (click)="addTemplate('### ')"></i>
+      <i title="Heading 4"  class="svg-icon svg-heading4"  (click)="addTemplate('#### ')"></i>
+      <i title="Heading 5"  class="svg-icon svg-heading5"  (click)="addTemplate('##### ')"></i>
+      <i title="bold" class="svg-icon svg-bold" (click)="addMutiSelectTemplate('bold')"></i>
+      <i title="italic" class="svg-icon svg-italic" (click)="addMutiSelectTemplate('italic')"></i>
+      <i title="strikethrough" class="svg-icon svg-strikethrough" (click)="addMutiSelectTemplate('strikethrough')"></i>
+      <i title="underline" class="svg-icon svg-underline" (click)="addMutiSelectTemplate('underline')"></i>
+      <i title="Image" class="svg-icon svg-image" (click)="showUpload()"></i>
+      <i  title="Code" class="svg-icon svg-code" (click)="addTemplate('```\n\n```\n')"></i>
+      <i title="Horizontal line" class="svg-icon svg-hr" (click)="addTemplate('---\n')"></i>
+      <i title="Quote"  class="svg-icon svg-quote"  (click)="addTemplate('> ')"></i>
+      <i title="Ordered list" class="svg-icon svg-ol" (click)="addTemplate('1. ')"></i>
+      <i title="Unordered list" class="svg-icon svg-ul" (click)="addTemplate('- ')"></i>
+      <i title="Incomplete task list" class="svg-icon svg-unchecked" (click)="addTemplate('- [ ] ')"></i>
+      <i title="Complete task list" class="svg-icon svg-checked" (click)="addTemplate('- [x] ')"></i>
+      <i title="Table" class="svg-icon svg-table" (click)="addTableTemplate()"></i>
+    </div>
+    <textarea class="variable-textarea" [(ngModel)]="content" (click)="getCaretPosWithEvent($event)" 
+    (select)="selection($event)" (keyup)="getCaretPosWithEvent($event)"></textarea>
     <markdown class="variable-binding" [data]="content"></markdown>
   </div>
 </div>

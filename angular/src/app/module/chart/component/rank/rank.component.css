@@ -5,11 +5,8 @@
 }
 
 
-:host ::ng-deep .ant-table-thead>tr>th{
-    /* color: rgba(34, 113, 202, 0.85); */
-    background-color: rgba(34, 113, 202, 0.85);
-}
 
 :host ::ng-deep .ant-table-small>.ant-table-content>.ant-table-body>table>.ant-table-thead>tr>th{
-    background-color: #f19ddf14;
+    background-color: #1886ebd9;
+    color: white;
 }

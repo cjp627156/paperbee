@@ -16,6 +16,7 @@ import { AuthGuard, ConfirmDeactivateGuard } from './appGuard.service';
 import { ArticleCreateComponent } from './module/article/component/article-create/article-create.component';
 import { NetworkModule } from './util/network/network.module';
 import { ArticleEditComponent } from './module/article/component/article-edit/article-edit.component';
+import en from '@angular/common/locales/en';
 
 registerLocaleData(zh);
 

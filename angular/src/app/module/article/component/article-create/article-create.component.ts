@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { NzMessageService, UploadFile, NzNotificationService } from 'ng-zorro-antd';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { NzMessageService, UploadFile, NzNotificationService, NzTableComponent, NzInputModule } from 'ng-zorro-antd';
 import { ArticleService } from '../../article.service';
 import { ApiException } from 'src/app/util/network/network.exception';
 import { Router } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article-create',
@@ -25,6 +27,9 @@ export class ArticleCreateComponent implements OnInit {
   columnList = [];
   selectedColumn = null;
 
+  private clicks = new Subject<any>();
+  private subscription: Subscription;
+
   constructor(private msg: NzMessageService, private articleService: ArticleService,
     private notification: NzNotificationService, public router: Router) { }
 
@@ -32,6 +37,8 @@ export class ArticleCreateComponent implements OnInit {
     this.initColumns();
     this.initAllLabels();
     this.setPasteImg();
+
+    this.subscription = this.clicks.pipe(throttleTime(3000)).subscribe(e => console.log("123"+e));
   }
 
   showUpload() {
@@ -105,6 +112,7 @@ export class ArticleCreateComponent implements OnInit {
     if (field.selectionStart || field.selectionStart === 0) {
       this.index = field.selectionStart;
     }
+    console.log("getCaretPosWithEvent: "+this.index);
   }
 
   /**
@@ -202,4 +210,184 @@ export class ArticleCreateComponent implements OnInit {
     })
   }
 
+  addTemplate(tmp){
+    let position;
+    if (this.markdown == "" || this.markdown.length == 0) {
+      this.markdown = this.markdown + tmp;
+      position = this.getCursorPositionFromAction(tmp);
+    } else {
+      //oldStr:原字符串，insertStr:要插入的字符串，caretPos:要插入的位置
+      var tmp1 = this.markdown.substring(0, this.index);
+      var tmp2 = this.markdown.substring(this.index, this.markdown.length);
+      this.markdown = tmp1 + "\n" + tmp + tmp2;
+      position = this.index + 1 + this.getCursorPositionFromAction(tmp);
+    }
+
+    this.setCursorPosition(position);
+  }
+
+  getCursorPositionFromAction(temp) : number{
+    let offset;
+    switch (temp) {
+      case '```\n\n```\n':
+        offset = 4;
+        break;
+      case '1. ':
+        offset = 3;
+        break;
+      case '- ':
+        offset = 2;
+        break;
+      case '---\n':
+        offset = 4;
+        break;
+      case '- [ ] ':
+        offset = 6;
+        break;
+      case '- [x] ':
+        offset = 6;
+        break;
+      case '> ':
+        offset = 2;
+        break;
+      case '# ':
+        offset = 2;
+        break;
+      case '## ':
+        offset = 3;
+        break;
+      case '### ':
+        offset = 4;
+        break;
+      case '#### ':
+        offset = 5;
+        break;
+      case '##### ':
+        offset = 6;
+        break;
+        
+    }
+
+    return offset;
+  }
+
+  setCursorPosition(offset){
+    var etextarea: any = document.getElementById("textarea");
+    setTimeout(() => {
+      etextarea.focus();
+      etextarea.selectionStart = offset;
+      etextarea.selectionEnd = offset;
+      this.index = offset;
+    }, 100);
+  }
+
+  selectionStart = 0;
+  selectionEnd = 0;
+
+  selection(event){
+    this.selectionStart = event.target.selectionStart;
+    this.selectionEnd = event.target.selectionEnd;
+    console.log(this.selectionStart+"-"+this.selectionEnd);
+  }
+
+  addMutiSelectTemplate(type){
+    //event.stopPropagation();
+    
+    let position;
+    let rule = this.getRuleFromType(type);
+    if (this.markdown == "" || this.markdown.length == 0) {
+      if(type == "underline"){
+        this.markdown = rule + this.markdown + "</u>";
+      }else{
+        this.markdown = rule + this.markdown + rule;
+      }
+      
+      position = this.getCursorPositionFromMutiSelect(type);
+    } else {
+      //oldStr:原字符串，insertStr:要插入的字符串，caretPos:要插入的位置
+      var tmp1 = this.markdown.substring(0, this.selectionStart);
+      var tmp2 = this.markdown.substring(this.selectionStart, this.selectionEnd);
+      var tmp3 = this.markdown.substring(this.selectionEnd, this.markdown.length);
+      if(type == "underline"){
+        this.markdown = tmp1 + rule + tmp2 + "</u>" + tmp3;
+      }else{
+        this.markdown = tmp1 + rule + tmp2 + rule + tmp3;
+      }
+      
+      position = this.selectionStart + this.getCursorPositionFromMutiSelect(type);
+    }
+
+    this.setCursorPosition(position);
+    this.selectionStart = 0;
+    this.selectionEnd = 0;
+    return true;
+  }
+
+  getRuleFromType(type){
+    let rule;
+    switch (type) {
+      case "bold":
+        rule = "**";
+        break;
+      case "italic":
+        rule = "*";
+        break;
+      case "strikethrough":
+        rule = "~~";
+        break;
+      case "underline":
+        rule = "<u>";
+        break;
+
+    }
+    return rule;
+  }
+
+  getCursorPositionFromMutiSelect(type){
+    let offset;
+    switch (type) {
+      case "bold":
+        offset = 2;
+        break;
+      case "italic":
+          offset = 1;
+        break;
+      case "strikethrough":
+          offset = 2;
+        break;
+      case "underline":
+          offset = 3;
+        break;
+    }
+
+    return offset;
+  }
+
+  addTableTemplate(){
+    let position;
+    let tmp = "| Header1 | Header2 | Header3 | Header4 | \n | --- | --- | --- | --- | \n | Row1 |  |  |  | \n | Row2 |  |  |  |";
+    if (this.markdown == "" || this.markdown.length == 0) {
+      this.markdown = this.markdown + tmp;
+      position = 9;
+    } else {
+      //oldStr:原字符串，insertStr:要插入的字符串，caretPos:要插入的位置
+      var tmp1 = this.markdown.substring(0, this.index);
+      var tmp2 = this.markdown.substring(this.index, this.markdown.length);
+      this.markdown = tmp1 + "\n" + tmp + "\n" + tmp2;
+      position = this.index + 1 + 9;
+    }
+
+    this.setCursorPosition(position);
+  }
+
+  edit(event) {
+    console.log("div click");
+    event.preventDefault();
+    event.stopPropagation();
+    this.clicks.next(event);
+  }
+
+  
 }
+
+
