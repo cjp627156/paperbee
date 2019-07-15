@@ -134,9 +134,11 @@ export class ArticleEditComponent implements OnInit {
       var article = x.data;
       this.title = article.title;
       this.selectedColumn = { id: article.columnId, columnName: article.columnName };
-      article.labelList.forEach(element => {
-        this.selectedTags.push(element.labelName);
-      });
+      if (article.labelList != 'undefined' && article.labelList != null) {
+        article.labelList.forEach(element => {
+          this.selectedTags.push(element.labelName);
+        });
+      }
       this.articleService.getArticleContent(id).subscribe(x1 => {
         this.content = x1.data.content;
       }, (error) => {
@@ -240,7 +242,7 @@ export class ArticleEditComponent implements OnInit {
 
   compareFn = (o1: any, o2: any) => (o1 && o2 ? o1.id === o2.id : o1 === o2);
 
-  addTemplate(tmp){
+  addTemplate(tmp) {
     let position;
     if (this.content == "" || this.content.length == 0) {
       this.content = this.content + tmp;
@@ -256,7 +258,7 @@ export class ArticleEditComponent implements OnInit {
     this.setCursorPosition(position);
   }
 
-  getCursorPositionFromAction(temp) : number{
+  getCursorPositionFromAction(temp): number {
     let offset;
     switch (temp) {
       case '```\n\n```\n':
@@ -300,7 +302,7 @@ export class ArticleEditComponent implements OnInit {
     return offset;
   }
 
-  setCursorPosition(offset){
+  setCursorPosition(offset) {
     var etextarea: any = document.getElementById("textarea");
     setTimeout(() => {
       etextarea.focus();
@@ -313,19 +315,19 @@ export class ArticleEditComponent implements OnInit {
   selectionStart = 0;
   selectionEnd = 0;
 
-  selection(event){
+  selection(event) {
     this.selectionStart = event.target.selectionStart;
     this.selectionEnd = event.target.selectionEnd;
-    console.log(this.selectionStart+"-"+this.selectionEnd);
+    console.log(this.selectionStart + "-" + this.selectionEnd);
   }
 
-  addMutiSelectTemplate(type){
+  addMutiSelectTemplate(type) {
     let position;
     let rule = this.getRuleFromType(type);
     if (this.content == "" || this.content.length == 0) {
-      if(type == "underline"){
+      if (type == "underline") {
         this.content = rule + this.content + "</u>";
-      }else{
+      } else {
         this.content = rule + this.content + rule;
       }
       position = this.getCursorPositionFromMutiSelect(type);
@@ -334,9 +336,9 @@ export class ArticleEditComponent implements OnInit {
       var tmp1 = this.content.substring(0, this.selectionStart);
       var tmp2 = this.content.substring(this.selectionStart, this.selectionEnd);
       var tmp3 = this.content.substring(this.selectionEnd, this.content.length);
-      if(type == "underline"){
+      if (type == "underline") {
         this.content = tmp1 + rule + tmp2 + "</u>" + tmp3;
-      }else{
+      } else {
         this.content = tmp1 + rule + tmp2 + rule + tmp3;
       }
       position = this.selectionStart + this.getCursorPositionFromMutiSelect(type);
@@ -347,7 +349,7 @@ export class ArticleEditComponent implements OnInit {
     this.selectionEnd = 0;
   }
 
-  getRuleFromType(type){
+  getRuleFromType(type) {
     let rule;
     switch (type) {
       case "bold":
@@ -367,27 +369,27 @@ export class ArticleEditComponent implements OnInit {
     return rule;
   }
 
-  getCursorPositionFromMutiSelect(type){
+  getCursorPositionFromMutiSelect(type) {
     let offset;
     switch (type) {
       case "bold":
         offset = 2;
         break;
       case "italic":
-          offset = 1;
+        offset = 1;
         break;
       case "strikethrough":
-          offset = 2;
+        offset = 2;
         break;
       case "underline":
-          offset = 3;
+        offset = 3;
         break;
     }
 
     return offset;
   }
 
-  addTableTemplate(){
+  addTableTemplate() {
     let position;
     let tmp = " | Header1 | Header2 | Header3 | Header4 | \n | --- | --- | --- | --- | \n | Row1 |  |  |  | \n | Row2 |  |  |  |";
     if (this.content == "" || this.content.length == 0) {

@@ -17,11 +17,11 @@ export class PersonService {
     return this.dFHttManager.post(DFConfigApi.paths.getMyArticleList, param, true);
   }
 
-  deleteArticleByRowId(rowId): Observable<any> {
+  deleteArticleById(id): Observable<any> {
     let param = {
-      rowId: rowId
+      articleId: id
     }
-    return this.dFHttManager.get(DFConfigApi.paths.deleteArticleByRowId, param);
+    return this.dFHttManager.get(DFConfigApi.paths.deleteArticleById, param);
   }
 
   getUserSelfInfo(): Observable<any> {

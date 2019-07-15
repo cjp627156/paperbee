@@ -19,4 +19,14 @@ export class HomeService {
     const param = { articleId: articleId };
     return this.dFHttManager.get(DFConfigApi.paths.addArticleView, param);
   }
+
+  getCenterMsgAmount(): Observable<any> {
+    return this.dFHttManager.get(DFConfigApi.paths.getCenterMsgAmount);
+  }
+  getCenterMessage(param: any): Observable<any> {
+    return this.dFHttManager.post(DFConfigApi.paths.getCenterMessage, param);
+  }
+  readCenterMessage(param: any): Observable<any> {
+    return this.dFHttManager.post(DFConfigApi.paths.readCenterMessage, param);
+  }
 }

@@ -20,7 +20,7 @@
               <div *ngIf="data.columnName!=null" class="article-column">《{{data.columnName}}》</div>
             </div>
           </div>
-          <a (click)="onDelete(data.rowId)" class="delete-div">删除</a>
+          <a (click)="onDelete(data.id)" class="delete-div">删除</a>
           <a (click)="edit(data)" class="delete-div" style="color: #3e3c3cf0;">编辑</a>
         </td>
       </tr>

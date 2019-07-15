@@ -6,6 +6,7 @@
     margin-bottom: 10px;
     font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
     border-bottom: inset;
+    border-width: thin;
 }
 
 
@@ -33,10 +34,8 @@
     height: 200px;
     margin-left: 5%;
     margin-bottom: 70px;
-    /* background: #FAFAFA; */
     box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.09);
     border-radius: 2px 2px 0px 0px;
-    /* border-top: 1px solid rgba(0,0,0,0.09); */
 }
 
 .comment-list{

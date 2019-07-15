@@ -7,8 +7,9 @@ export const DFConfigApi: any = {
         SUCCESS: "ok",
         FAILED: "error"
     },
-    domain: "/api/bees", 
-    //domain: "http://localhost:8010/bees", 
+    //domain: "/api/paperbee", 
+    domain: "http://localhost:8010/paperbee", 
+    //domain: "http://kerrysmec.cn/api/paperbee", 
     //domain: "http://paperbee.definesys.com/api/bees", 
     roles: Array<string>(),
     paths: {
@@ -25,14 +26,17 @@ export const DFConfigApi: any = {
         "getArticleComments":"/article/getArticleComments",
         "getArticleById":"/article/getArticleById",
         "getMyArticleList":"/article/getMyArticleList",
-        "deleteArticleByRowId":"/article/deleteArticleByRowId",
+        "deleteArticleById":"/article/deleteArticleById",
         "getUserSelfInfo":"/user/getSelfInfo",
         "updateUserSelfInfo":"/user/updateSelfInfo",
         "updateUserSignature":"/user/updateUserSignature",
         "getArticleContent":"/article/getArticleContent",
         "updateArticle":"/article/updateArticle",
         "getUserColumns":"/user/getColunmList",
-        "getTopIntegralUser":"/user/getTopIntegralUser"
+        "getTopIntegralUser":"/user/getTopIntegralUser",
+        "getCenterMsgAmount": "/user/getCenterMsgAmount",
+        "getCenterMessage": "/user/getCenterMessage",
+        "readCenterMessage": "/user/readCenterMessage"
     },
     lookupType: {
 

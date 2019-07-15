@@ -42,14 +42,14 @@ export class MyArticleComponent implements OnInit {
     })
   }
 
-  onDelete(rowId) {
+  onDelete(id) {
     this.modalService.confirm({
       nzTitle: '你确定要删除该文章吗?',
       nzOkText: 'Yes',
       nzCancelText: 'No',
       nzOkType: 'danger',
       nzOnOk: () => {
-        this.personService.deleteArticleByRowId(rowId).subscribe(response => {
+        this.personService.deleteArticleById(id).subscribe(response => {
           this.initQuery();
         }, (error) => {
           var errorMsg = '网络异常，请稍后再试';
