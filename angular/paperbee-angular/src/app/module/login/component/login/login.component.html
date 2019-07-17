@@ -1,0 +1,31 @@
+<div class="login-cover">
+  <div class="login-panel">
+    <img class="logo-image" src="../../../../../assets/images/beeslogo.png" />
+    <div class="logo-title">Welcome to PaperBee</div>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item class="login-form-item">
+        <nz-form-control>
+          <nz-input-group>
+            <input class="input" type="text" formControlName="userName" placeholder="Username/Email">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">请输入您的账号或邮箱!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="login-form-item">
+        <nz-form-control>
+          <nz-input-group>
+            <input class="input" type="password" formControlName="password" placeholder="Password">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">请输入您的密码!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button class="login-form-button" [nzType]="'primary'" (click)="login()">Sign in</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+  </div>
+  <ngx-loading [show]="loading" [config]="{primaryColour: '#dd0031', secondaryColour: '#006ddd', tertiaryColour: '#dd0031', backdropBorderRadius: '3px',backdropBackgroundColour: 'rgba(255,255,255,0.3)'}"></ngx-loading>
+</div>

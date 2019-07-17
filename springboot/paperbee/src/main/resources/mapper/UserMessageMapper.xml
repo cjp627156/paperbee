@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.kerry.paperbee.mapper.UserMessageMapper">
+
+
+    <select id="queryMessage" resultType="pers.kerry.paperbee.pojo.UserMessage">
+SELECT
+	u. NAME AS sender,
+	a.title AS article_title,
+	CONCAT(
+		'/content?id=',
+		um.article_id
+	) AS link_url,
+	um.*
+FROM
+	(
+		SELECT
+			*
+		FROM
+			user_message
+		WHERE
+			STATUS = 'unread'
+		AND receiver = #{user}
+		ORDER BY
+			creation_date DESC
+	) um
+LEFT JOIN user u ON um.created_by = u.username
+LEFT JOIN article a ON um.article_id = a.id
+UNION ALL
+	SELECT
+		u. NAME AS sender,
+		a.title AS article_title,
+		CONCAT(
+			'/content?id=',
+			um.article_id
+		) AS link_url,
+		um.*
+	FROM
+		(
+			SELECT
+				*
+			FROM
+				user_message
+			WHERE
+				STATUS = 'read'
+			AND receiver = #{user}
+			ORDER BY
+				creation_date DESC
+		) um
+	LEFT JOIN user u ON um.created_by = u.username
+	LEFT JOIN article a ON um.article_id = a.id
+	</select>
+
+    <insert id="addMessage">
+INSERT INTO user_message (
+	id,
+	message_type,
+	content,
+	receiver,
+	STATUS,
+	article_id,
+	object_version_number,
+	created_by,
+	creation_date,
+	last_update_by,
+	last_update_date
+)
+VALUES
+	(
+		REPLACE (UUID(), '-', ''),
+		#{userMessage.messageType},
+		#{userMessage.content},
+		#{userMessage.receiver},
+		'unread',
+		#{userMessage.articleId},
+		1,
+		#{user},
+		now(),
+		#{user},
+		now()
+	)
+	</insert>
+
+
+</mapper>

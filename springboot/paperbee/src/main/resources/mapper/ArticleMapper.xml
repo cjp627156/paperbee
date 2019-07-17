@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.kerry.paperbee.mapper.ArticleMapper">
+
+    <select id="queryFull" resultType="pers.kerry.paperbee.pojo.ArticleQueryV" parameterType="String">
+        SELECT
+        v.*,
+        IF (
+        LOCATE(
+        concat(',', #{user} ,','),
+        like_users
+        ) > 0,
+        'liked',
+        'unlike'
+        ) AS liked
+        FROM
+        article_query_v v,
+        article_content c
+        WHERE
+        v.content_id = c.id
+        AND labels LIKE concat('%',#{label},'%')
+        AND (
+        search_content LIKE concat('%',#{searchContent},'%')
+        OR MATCH (c.content) AGAINST (
+        #{searchContent} IN BOOLEAN MODE
+        )
+        )
+
+        <choose>
+            <when test="orderBy!=null and orderBy!=''">
+                ORDER BY ${orderBy}
+            </when>
+            <otherwise>
+                ORDER BY creation_date desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="getArticleByCreator" resultType="pers.kerry.paperbee.pojo.ArticleQueryV" parameterType="String">
+        SELECT
+        *
+        FROM
+        article_query_v
+        WHERE
+        created_by = #{creator}
+        <if test="columnId!=null">
+            AND column_id = #{columnId}
+        </if>
+        ORDER BY
+        creation_date DESC
+    </select>
+
+    <insert id="addArticleContent">
+        <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="articleContent.id">
+            select REPLACE(UUID(),'-','')
+        </selectKey>
+        insert into
+        article_content(id,content,object_version_number,created_by,creation_date,last_update_by,last_update_date)
+        values(#{articleContent.id},#{articleContent.content},1,#{user},now(),#{user},now())
+    </insert>
+
+    <insert id="addArticle">
+        <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="article.id">
+            select REPLACE(UUID(),'-','')
+        </selectKey>
+        INSERT INTO article (
+        id,
+        title,
+        author,
+        content_id,
+        column_id,
+        publish_date,
+        object_version_number,
+        created_by,
+        creation_date,
+        last_update_by,
+        last_update_date
+        )
+        VALUES
+        (
+        #{article.id},
+        #{article.title},
+        #{article.author},
+        #{article.contentId},
+        #{article.columnId},
+        now(),
+        1,
+        #{user},
+        now(),
+        #{user},
+        now()
+        )
+    </insert>
+
+
+
+</mapper>
