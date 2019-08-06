@@ -10,6 +10,7 @@ import { PersonInfoComponent } from './component/person-info/person-info.compone
 import { MyArticleComponent } from './component/my-article/my-article.component';
 import { PersonService } from './person.service';
 import { LocalStorage } from 'src/app/app.localStorage';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { LocalStorage } from 'src/app/app.localStorage';
     RouterModule.forChild(PersonRouter),
     ReactiveFormsModule,
     FormsModule,
-    NetworkModule
+    NetworkModule,
+    LoadingBarModule
   ],
   providers: [PersonService, LocalStorage],
   declarations: [PersonHomeComponent, PersonInfoComponent, MyArticleComponent]

@@ -7,10 +7,10 @@ export const DFConfigApi: any = {
         SUCCESS: "ok",
         FAILED: "error"
     },
-    //domain: "/api/paperbee", 
-    domain: "http://localhost:8010/paperbee", 
+    domain: "/api/paperbee", 
+    //domain: "http://localhost:8010/paperbee", 
     //domain: "http://kerrysmec.cn/api/paperbee", 
-    //domain: "http://paperbee.definesys.com/api/bees", 
+    //domain: "http://paperbee.definesys.com/api/paperbee", 
     roles: Array<string>(),
     paths: {
         "loginin": "/user/login",

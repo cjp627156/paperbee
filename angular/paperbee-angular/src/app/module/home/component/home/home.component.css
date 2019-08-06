@@ -166,7 +166,7 @@ input::-webkit-input-placeholder {
     flex: 1 1;
     align-items: flex-start;
     cursor: pointer;
-    padding: 12px 0px 11px 23px;
+    padding: 12px 0px 11px 10px;
 }
 
 ::ng-deep .ant-tabs-bar {

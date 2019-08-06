@@ -4,7 +4,7 @@ import { ArticleService } from '../../article.service';
 import { ApiException } from 'src/app/util/network/network.exception';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-article-create',
@@ -28,7 +28,7 @@ export class ArticleCreateComponent implements OnInit {
   selectedColumn = null;
 
   private clicks = new Subject<any>();
-  private subscription: Subscription;
+  
 
   constructor(private msg: NzMessageService, private articleService: ArticleService,
     private notification: NzNotificationService, public router: Router) { }
@@ -37,8 +37,7 @@ export class ArticleCreateComponent implements OnInit {
     this.initColumns();
     this.initAllLabels();
     this.setPasteImg();
-
-    this.subscription = this.clicks.pipe(throttleTime(3000)).subscribe(e => console.log("123"+e));
+   
   }
 
   showUpload() {

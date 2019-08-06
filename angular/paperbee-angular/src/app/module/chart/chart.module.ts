@@ -8,6 +8,7 @@ import { ChartService } from './chart.service';
 import { LocalStorage } from 'src/app/app.localStorage';
 import { RouterModule } from '@angular/router';
 import { ChartRouter } from './chart.routing';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ChartRouter } from './chart.routing';
     RouterModule.forChild(ChartRouter),
     ReactiveFormsModule,
     FormsModule,
-    NetworkModule
+    NetworkModule,
+    LoadingBarModule
   ],
   providers: [ChartService, LocalStorage],
   declarations: [RankComponent]

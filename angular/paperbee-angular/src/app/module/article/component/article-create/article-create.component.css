@@ -214,3 +214,11 @@ markdown ::ng-deep ol ul {
 ::ng-deep img{
     max-width: 100%;
 }
+
+
+/* 
+:host ::ng-deep .upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-right: 8px;
+  } */

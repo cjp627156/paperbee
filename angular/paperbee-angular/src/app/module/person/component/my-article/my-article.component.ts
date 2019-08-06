@@ -3,6 +3,7 @@ import { PersonService } from '../../person.service';
 import { ApiException } from 'src/app/util/network/network.exception';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { LocalStorage } from 'src/app/app.localStorage';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-my-article',
@@ -11,9 +12,10 @@ import { LocalStorage } from 'src/app/app.localStorage';
 })
 export class MyArticleComponent implements OnInit {
 
-  constructor(private personService: PersonService, private message: NzMessageService, private modalService: NzModalService, private localStorage: LocalStorage) { }
+  constructor(private personService: PersonService, private message: NzMessageService, private modalService: NzModalService, private localStorage: LocalStorage,private loadingBar: LoadingBarService) { }
 
   ngOnInit() {
+    this.loadingBar.start();
     this.initColumns();
     this.initQuery();
   }
@@ -33,12 +35,14 @@ export class MyArticleComponent implements OnInit {
     this.personService.getMyArticleList(this.pageIndex, this.pageSize,columnId).subscribe(response => {
       this.dataSet = response.data.result;
       this.total = response.data.count;
+      this.loadingBar.complete();
     }, (error) => {
       var errorMsg = '网络异常，请稍后再试';
       if (error instanceof ApiException) {
         errorMsg = error.message;
       }
       this.message.error(errorMsg);
+      this.loadingBar.complete();
     })
   }
 

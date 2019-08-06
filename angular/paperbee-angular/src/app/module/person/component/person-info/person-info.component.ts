@@ -3,6 +3,7 @@ import { PersonService } from '../../person.service';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { MessageService } from 'src/app/util/message.service';
 import { ApiException } from 'src/app/util/network/network.exception';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-person-info',
@@ -12,11 +13,12 @@ import { ApiException } from 'src/app/util/network/network.exception';
 export class PersonInfoComponent implements OnInit {
 
   constructor(private personService:PersonService, private message: NzMessageService,
-    private messageService: MessageService, private modalService: NzModalService) { }
+    private messageService: MessageService, private modalService: NzModalService,private loadingBar: LoadingBarService) { }
 
   ngOnInit() {
-    this.initUserInfo();
+    this.loadingBar.start();
     this.initColumns();
+    this.initUserInfo();
   }
 
   rowId:string;
@@ -43,12 +45,14 @@ export class PersonInfoComponent implements OnInit {
       this.phone=response.data.phone;
       this.signature=response.data.signature;
       this.integral=response.data.integral;
+      this.loadingBar.complete();
     }, (error) => {
       var errorMsg = '网络异常，请稍后再试';
       if (error instanceof ApiException) {
         errorMsg = error.message;
       }
       this.message.error(errorMsg);
+      this.loadingBar.complete();
     })
   }
 

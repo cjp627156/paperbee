@@ -16,8 +16,7 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 })
 export class ArticleHomeComponent implements OnInit {
 
-  constructor(private router: Router, private localStorage: LocalStorage,
-    private messageService: MessageService, private message: NzMessageService,
+  constructor(private messageService: MessageService, private message: NzMessageService,
     private articleService: ArticleService, private notification: NzNotificationService,
     private loadingBar: LoadingBarService, ) { }
   public subscription: Subscription;
@@ -48,14 +47,6 @@ export class ArticleHomeComponent implements OnInit {
     this.articlesQuery();
   }
 
-  /**
- * 路由守卫
- */
-  routingGuard() {
-    if (JSON.stringify(this.localStorage.get('TOKEN')) === "false") {
-      this.router.navigateByUrl('login');
-    }
-  }
 
   /**
    * 组件销毁
@@ -69,6 +60,7 @@ export class ArticleHomeComponent implements OnInit {
   */
   ngAfterViewInit(): void {
     this.subscription = this.messageService.getArticleMessage().subscribe(msg => {
+      this.loadingBar.start();
       this.searchContent = msg.type;
       this.initPageIndex();
       this.articlesQuery();
@@ -101,6 +93,7 @@ export class ArticleHomeComponent implements OnInit {
       if (x.data.count <= this.articles.length) {
         this.isMore1 = false;
       }
+      this.loadingBar.complete();
     }, (error) => {
       this.loadingBar.complete();
       var errorMsg = '网络错误，请重试!';
@@ -108,6 +101,7 @@ export class ArticleHomeComponent implements OnInit {
         errorMsg = error.message;
       }
       this.message.error(errorMsg);
+      this.loadingBar.complete();
     })
   }
 
@@ -145,6 +139,7 @@ export class ArticleHomeComponent implements OnInit {
   }
 
   getLabelArticle(param) {
+    this.loadingBar.start();
     if (this.label == param) {
       this.label = "";
     } else {
