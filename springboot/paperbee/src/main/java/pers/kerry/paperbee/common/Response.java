@@ -2,6 +2,14 @@ package pers.kerry.paperbee.common;
 
 import java.util.*;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 接口返回格式 Response
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:09
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 public class Response {
     private String code;
     private String message;

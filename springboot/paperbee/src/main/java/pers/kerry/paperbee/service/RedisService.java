@@ -9,7 +9,12 @@ import pers.kerry.paperbee.pojo.ArticleContent;
 import javax.annotation.Resource;
 
 /**
- * dao层方法中，如果需要传入参数，无法将传入参数作为 cache的key，所以在本方法中进行封装
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: dao层方法中，如果需要传入参数，无法将传入参数作为 cache的key，所以在本方法中进行封装
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:13
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
  */
 @Service
 public class RedisService {

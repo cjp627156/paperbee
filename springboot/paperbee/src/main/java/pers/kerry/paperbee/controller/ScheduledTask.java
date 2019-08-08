@@ -14,6 +14,14 @@ import pers.kerry.paperbee.pojo.User;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 定时调度
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:09
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @RestController
 @RequestMapping("/scheduler")
 public class ScheduledTask {

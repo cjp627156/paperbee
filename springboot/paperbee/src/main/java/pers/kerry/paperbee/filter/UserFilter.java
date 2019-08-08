@@ -8,6 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 过滤器：token校验
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:10
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @Component
 public class UserFilter implements Filter {
 

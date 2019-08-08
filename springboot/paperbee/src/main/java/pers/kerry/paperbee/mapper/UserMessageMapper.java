@@ -8,6 +8,14 @@ import pers.kerry.paperbee.pojo.UserMessage;
 
 import java.util.List;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: user_message 表mapper
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:13
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @Mapper
 public interface UserMessageMapper {
 

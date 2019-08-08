@@ -5,9 +5,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 基于分页的方法改造
- * PageHelper -> PageInfo -> PageSerializable
- * @param <T>
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 分页方法的改造，PageHelper -> PageInfo -> PageSerializable
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:08
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
  */
 public class PageQueryResult<T> implements Serializable {
     private static final long serialVersionUID = 1L;

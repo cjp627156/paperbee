@@ -15,9 +15,19 @@ import javax.mail.internet.MimeMessage;
 import java.util.Map;
 
 @Component
+
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 邮件的工具类
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:08
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 public class EmailClient {
     @Value("${sys.mail.sender}")
-    private String MAIL_SENDER; //邮件发送者
+    //邮件发送者
+    private String MAIL_SENDER;
 
     @Autowired
     private JavaMailSender javaMailSender;

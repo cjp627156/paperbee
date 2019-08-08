@@ -20,6 +20,14 @@ import java.util.UUID;
 
 import static pers.kerry.paperbee.filter.UserRepo.getCurrentUser;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 文章相关的 Controller
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:07
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @RestController
 @RequestMapping("/paperbee/article")
 public class ArticleController {
@@ -288,7 +296,8 @@ public class ArticleController {
                 try {
                     emailClient.sendSimpleMail(emailBean);
                 }catch (Exception e){
-                    e.printStackTrace();//忽略错误
+                    //忽略错误
+                    e.printStackTrace();
                 }
                }).start();
             return Response.ok();

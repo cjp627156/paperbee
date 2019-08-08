@@ -7,6 +7,14 @@ import pers.kerry.paperbee.pojo.Label;
 
 import java.util.List;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: label表mapper
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:12
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @Mapper
 public interface LabelMapper {
 

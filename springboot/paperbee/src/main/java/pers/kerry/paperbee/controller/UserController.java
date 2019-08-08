@@ -1,10 +1,8 @@
 package pers.kerry.paperbee.controller;
 
 import com.github.pagehelper.PageHelper;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.*;
 import pers.kerry.paperbee.common.EmailClient;
 import pers.kerry.paperbee.common.PageQueryResult;
 import pers.kerry.paperbee.mapper.UserColumnMapper;
@@ -25,6 +23,14 @@ import java.util.Map;
 import static pers.kerry.paperbee.common.JwtUtil.createToken;
 import static pers.kerry.paperbee.filter.UserRepo.getCurrentUser;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: 用户相关的Controller
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:06
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @RestController
 @RequestMapping("/paperbee/user")
 public class UserController {
@@ -170,6 +176,12 @@ public class UserController {
     public Response readCenterMessage(@RequestBody List<String> request){
        userMessageMapper.readMessageList(getCurrentUser(),request);
         return Response.ok();
+    }
+
+    @RequestMapping(path = "/loadUserByUsername",method = RequestMethod.GET)
+    public String loadUserByUsername(@RequestParam("username")String username){
+        User user = userMapper.getUserInfo(username);
+        return user.getPassword();
     }
 
     @RequestMapping(path = "/sendEmail",method = RequestMethod.GET)

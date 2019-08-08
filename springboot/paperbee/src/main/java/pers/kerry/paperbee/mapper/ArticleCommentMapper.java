@@ -8,6 +8,14 @@ import pers.kerry.paperbee.pojo.ArticleComment;
 
 import java.util.List;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: article_comment 表mapper
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:11
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @Mapper
 public interface ArticleCommentMapper {
 

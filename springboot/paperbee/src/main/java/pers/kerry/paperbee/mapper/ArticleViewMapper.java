@@ -4,6 +4,14 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: article_view表mapper
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:12
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @Mapper
 public interface ArticleViewMapper {
 

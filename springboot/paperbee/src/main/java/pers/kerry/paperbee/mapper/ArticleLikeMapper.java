@@ -2,6 +2,15 @@ package pers.kerry.paperbee.mapper;
 
 import org.apache.ibatis.annotations.*;
 
+
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: article_like 表mapper
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:11
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 @Mapper
 public interface ArticleLikeMapper {
 

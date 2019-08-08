@@ -11,8 +11,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *  @Copyright: Shanghai Definesys Company.All rights reserved.
+ *  @Description: jwt工具类
+ *  @author: kerry.wu
+ *  @since: 2019/8/8  18:08
+ *  @history:
+ *          1.2019/8/8 created by kerry.wu
+ */
 public class JwtUtil {
     private static String SECRET = "cacb2e1e07ff4de2856583ffcb46e751";
+    //private static String SECRET ="defineSysJwtSigningKey";
 
     /**
      * 创建JWT的token
@@ -21,10 +30,12 @@ public class JwtUtil {
      * @throws Exception
      */
     public static String createToken(String username,String name, String role) throws Exception {
-        Date issDate = new Date();//签发日期
+        //签发日期
+        Date issDate = new Date();
         Calendar currentTime = Calendar.getInstance();
         currentTime.add(Calendar.YEAR, 3);
-        Date expDate = currentTime.getTime();//过期日期，3年后
+        //过期日期，3年后
+        Date expDate = currentTime.getTime();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("alg", "HS256");
         map.put("typ", "JWT");
